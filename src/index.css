@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+  --ox-deep: #2c0509;
+  /* darkest oxblood */
+  --ox: #4a0d12;
+  /* oxblood */
+  --club-red: #7a0e16;
+  /* club red */
+  --crimson: #a8121f;
+  /* crimson accent */
+  --bone: #f3e9d6;
+  /* cream / bone */
+  --bone-dim: #d8c7ab;
+  --gold: #c9a24b;
+  /* antique gold foil */
+  --gold-hi: #ecd08a;
+
+  --font-marcellus: 'Marcellus', serif;
+  --font-marcellus-sc: 'Marcellus SC', serif;
+  --font-cormorant: 'Cormorant Garamond', serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: radial-gradient(120% 80% at 50% -10%, #1d0508 0%, #120305 55%, #070203 100%);
+  color: var(--bone);
+  font-family: var(--font-cormorant);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Film grain overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9;
+  opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* Base utility classes that might be shared */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: clamp(20px, 5vw, 64px) clamp(14px, 4vw, 48px) 80px;
+}
