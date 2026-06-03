@@ -2,10 +2,10 @@ import './GallerySection.css';
 import { motion } from 'framer-motion';
 
 const images = [
-  "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?auto=format&fit=crop&q=80&w=800", // Club vibe
-  "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=800", // Drinks
-  "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&q=80&w=800", // Event
-  "https://images.unsplash.com/photo-1545128485-c400e7702796?auto=format&fit=crop&q=80&w=800", // Premium atmosphere
+  "./galeria-1.png", 
+  "./galeria-2.png", 
+  "./galeria-3.png",
+  "./galeria-4.png", 
 ];
 
 const GallerySection = () => {
