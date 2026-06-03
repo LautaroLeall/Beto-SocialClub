@@ -1,0 +1,80 @@
+.gallery-section {
+  width: 100%;
+  padding: 80px 0;
+}
+
+.gallery-title {
+  font-family: var(--font-marcellus);
+  font-size: clamp(32px, 5vw, 48px);
+  color: var(--bone);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.gallery-title em {
+  font-family: var(--font-cormorant);
+  font-style: italic;
+  color: var(--gold);
+}
+
+.gallery-subtitle {
+  text-align: center;
+  font-family: var(--font-cormorant);
+  color: var(--bone-dim);
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 40px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(44, 5, 9, 0.9) 0%, rgba(122, 14, 22, 0.2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-overlay span {
+  font-family: var(--font-marcellus);
+  color: var(--gold);
+  font-size: 24px;
+  letter-spacing: 0.15em;
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-item:hover .gallery-overlay span {
+  transform: translateY(0);
+}
