@@ -1,0 +1,94 @@
+.card-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Leather stage background */
+.card-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 50% at 30% 22%, #8d1119 0%, #6a0c13 38%, #480910 72%, #2c0609 100%),
+    #3a0a0e;
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, .65);
+}
+
+/* leather sheen + creases */
+.card-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .5;
+  background:
+    radial-gradient(40% 30% at 78% 80%, rgba(255, 160, 150, .18), transparent 60%),
+    radial-gradient(50% 35% at 20% 90%, rgba(0, 0, 0, .5), transparent 60%),
+    repeating-linear-gradient(122deg, rgba(255, 255, 255, .025) 0 2px, transparent 2px 26px);
+}
+
+.card-section-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 100px clamp(20px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.card-section-text {
+  text-align: center;
+  max-width: 600px;
+}
+
+.card-section-kicker {
+  font-family: var(--font-marcellus-sc);
+  color: var(--gold);
+  letter-spacing: .4em;
+  font-size: clamp(10px, 1.2vw, 13px);
+  text-transform: uppercase;
+}
+
+.card-section-title {
+  font-family: var(--font-marcellus);
+  font-weight: 400;
+  font-size: clamp(34px, 5vw, 58px);
+  color: var(--bone);
+  margin: .3em 0 .2em;
+  line-height: 1.05;
+}
+
+.card-section-title em {
+  font-family: var(--font-cormorant);
+  font-style: italic;
+  color: var(--gold);
+}
+
+.card-section-rule {
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 20px;
+}
+
+.card-section-desc {
+  font-family: var(--font-cormorant);
+  font-style: italic;
+  color: var(--bone-dim);
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.card-section-stage {
+  width: 100%;
+}
