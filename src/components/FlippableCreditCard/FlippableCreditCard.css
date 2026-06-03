@@ -56,7 +56,7 @@
   cursor: pointer;
   transform: rotate(-.4deg);
   transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-              box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .card.back {
@@ -95,11 +95,9 @@
   inset: 0;
   opacity: .10;
   mix-blend-mode: screen;
-  background: repeating-radial-gradient(
-    circle at 50% 44%,
-    transparent 0 6cqw,
-    rgba(255, 220, 180, .7) 6cqw 6.25cqw
-  );
+  background: repeating-radial-gradient(circle at 50% 44%,
+      transparent 0 6cqw,
+      rgba(255, 220, 180, .7) 6cqw 6.25cqw);
   transition: opacity 0.5s ease;
 }
 
@@ -110,13 +108,12 @@
 /* thin gold border — like a real card's foil edge */
 .card .border {
   position: absolute;
-  /* inset matches the card padding so inner content stays flush */
   inset: 4cqw;
   border: 0.3cqw solid var(--gold);
-  /* real card tiny radius */
   border-radius: 6px;
   pointer-events: none;
-  z-index: 4;
+  /* z-index: 2 = BELOW .inner (z-index:3) so border never covers content */
+  z-index: 2;
   transition: border-color 0.4s ease;
 }
 
@@ -133,12 +130,12 @@
   border-radius: 3px;
 }
 
-/* corner gleam — shimmer highlight */
+/* corner gleam — shimmer highlight — z-index:4 sits above border(2) but below nothing critical */
 .card .gleam {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 5;
+  z-index: 4;
   background: linear-gradient(118deg, transparent 55%, rgba(255, 240, 210, .09) 72%, transparent 82%);
   transition: background 0.4s ease;
 }
@@ -165,11 +162,12 @@
   padding: 4.5cqw 4.5cqw 3.5cqw;
 }
 
-/* VIP / MMXXV corners — absolute inside .inner */
+/* VIP / MMXXV corners — positioned INSIDE the gold border area (border is at 4cqw inset) */
 .front .tier {
   position: absolute;
-  top: 0;
-  left: 0;
+  /* 5.2cqw from top/left puts it clearly inside the 4cqw border */
+  top: 5.2cqw;
+  left: 5.5cqw;
   font-family: var(--font-marcellus-sc);
   letter-spacing: .3em;
   font-size: 2.1cqw;
@@ -179,8 +177,8 @@
 
 .front .est {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 5.2cqw;
+  right: 5.5cqw;
   font-family: var(--font-marcellus-sc);
   letter-spacing: .3em;
   font-size: 2.1cqw;
@@ -256,10 +254,11 @@
   font-weight: 400;
 }
 
-/* "❋ Sólo Gente Copada" */
+/* "❋ Sólo Gente Copada" — needs bottom margin to clear the bottom border */
 .front .foot {
   margin-top: auto;
-  margin-bottom: 0;
+  /* 5.5cqw bottom margin keeps foot above the 4cqw gold border */
+  margin-bottom: 5.5cqw;
   text-align: center;
   display: flex;
   align-items: center;
@@ -309,8 +308,8 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  /* 4.5cqw left/right so Beto. never touches the card edge */
-  padding: 4cqw 5cqw 0;
+  /* 5.5cqw top so Beto. sits clearly inside the 4cqw border */
+  padding: 5.5cqw 5.5cqw 0;
   flex-shrink: 0;
 }
 
@@ -359,7 +358,8 @@
   z-index: 3;
   display: flex;
   gap: 2cqw;
-  padding: 1.8cqw 5cqw 0;
+  /* 5.5cqw left/right to shift data slightly inside the border */
+  padding: 1.8cqw 7.5cqw 0;
   flex: 1;
   min-height: 0;
   align-items: flex-start;
@@ -418,11 +418,9 @@
   height: 6.5cqw;
   border: 0.15cqw solid rgba(201, 162, 75, .55);
   border-radius: 2px;
-  background: repeating-linear-gradient(
-    120deg,
-    rgba(243, 233, 214, .05) 0 1.2cqw,
-    rgba(243, 233, 214, .10) 1.2cqw 2.4cqw
-  );
+  background: repeating-linear-gradient(120deg,
+      rgba(243, 233, 214, .05) 0 1.2cqw,
+      rgba(243, 233, 214, .10) 1.2cqw 2.4cqw);
   display: flex;
   align-items: flex-end;
   padding: .6cqw .9cqw;
@@ -462,17 +460,18 @@
   text-align: right;
 }
 
-/* Terms bar */
+/* Terms bar — must clear the 4cqw bottom border */
 .back .terms {
   position: relative;
   z-index: 3;
-  padding: 0 5cqw;
+  padding: 0 5.5cqw;
   margin-top: 1.4cqw;
-  margin-bottom: 3cqw;
+  /* 5.5cqw bottom margin keeps text above the gold border line */
+  margin-bottom: 5.5cqw;
   font-family: var(--font-cormorant);
   font-size: 1.7cqw;
   line-height: 1.3;
-  color: rgba(216, 199, 171, .58);
+  color: rgba(216, 199, 171, .65);
   text-align: center;
   display: flex;
   gap: .9cqw;
@@ -492,9 +491,11 @@
     flex-direction: column;
     gap: 1.5cqw;
   }
+
   .back .sigwrap {
     width: 100%;
   }
+
   .back .cobrand {
     justify-content: flex-start;
   }
