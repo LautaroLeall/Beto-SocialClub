@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables — NEVER subir al repo con credenciales reales
+.env
+.env.local
+.env.production
+.env.*.local
+# .env.example sí se puede subir (contiene solo placeholders)
