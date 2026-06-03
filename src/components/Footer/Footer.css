@@ -49,11 +49,6 @@
   color: var(--gold);
 }
 
-.social-icon {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-}
 
 /* Copyright */
 .footer-copy {
@@ -69,4 +64,51 @@
     flex-direction: column;
     gap: 18px;
   }
+}
+
+/* ── Developer credit — small and subdued ── */
+.footer-dev {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.dev-socials {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dev-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(216, 199, 171, 0.25);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dev-icon:hover {
+  color: rgba(201, 162, 75, 0.6);
+}
+
+.dev-credit {
+  font-family: var(--font-cormorant);
+  font-style: italic;
+  font-size: 11px;
+  color: rgba(216, 199, 171, 0.28);
+}
+
+.dev-name {
+  color: rgba(216, 199, 171, 0.42);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  margin-left: 3px;
+}
+
+.dev-name:hover {
+  color: rgba(201, 162, 75, 0.7);
 }
