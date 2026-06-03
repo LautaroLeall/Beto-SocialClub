@@ -1,0 +1,179 @@
+.spec {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle dark-red tinted background */
+.spec::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(80% 60% at 50% 50%, rgba(70, 8, 14, 0.25), transparent 80%);
+  pointer-events: none;
+}
+
+.spec .container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.spec h2 {
+  font-family: var(--font-marcellus);
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 46px);
+  text-align: center;
+  color: var(--bone);
+  margin-bottom: 12px;
+  letter-spacing: .02em;
+}
+
+.spec h2 em {
+  font-style: italic;
+  color: var(--gold);
+  font-family: var(--font-cormorant);
+}
+
+.spec-rule {
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 16px;
+}
+
+.spec .lede {
+  text-align: center;
+  font-style: italic;
+  color: var(--bone-dim);
+  max-width: 60ch;
+  margin: 0 auto clamp(36px, 5vw, 56px);
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.55;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(20px, 2.5vw, 28px);
+  width: 100%;
+}
+
+/* ---- Panel ---- */
+.panel {
+  background: linear-gradient(160deg, rgba(122, 14, 22, .22), rgba(44, 5, 9, .55));
+  border: 1px solid rgba(201, 162, 75, .22);
+  border-radius: 16px;
+  padding: 32px 28px 34px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease,
+              background 0.4s ease;
+  cursor: default;
+}
+
+.panel:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: rgba(201, 162, 75, .55);
+  background: linear-gradient(160deg, rgba(122, 14, 22, .35), rgba(44, 5, 9, .7));
+  box-shadow:
+    0 20px 40px -15px rgba(0, 0, 0, .8),
+    inset 0 0 30px rgba(201, 162, 75, .06),
+    0 0 0 1px rgba(201, 162, 75, .1);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .35;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+
+/* Gold accent line that slides in on hover */
+.panel::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-hi));
+  border-radius: 0 0 16px 16px;
+  transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.panel:hover::after {
+  width: 100%;
+}
+
+/* Icon wrapper */
+.icon-wrapper {
+  margin-bottom: 22px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(122, 14, 22, 0.35);
+  border: 1px solid rgba(201, 162, 75, .18);
+  transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+.panel:hover .icon-wrapper {
+  transform: scale(1.1) rotate(-3deg);
+  border-color: rgba(201, 162, 75, .45);
+  background: rgba(122, 14, 22, 0.5);
+}
+
+.privilege-icon {
+  color: var(--gold);
+  transition: filter 0.4s ease;
+}
+
+.panel:hover .privilege-icon {
+  filter: drop-shadow(0 0 6px rgba(201, 162, 75, 0.5));
+}
+
+.panel h3 {
+  font-family: var(--font-marcellus-sc);
+  letter-spacing: .25em;
+  font-size: 13px;
+  color: var(--gold);
+  margin-bottom: 14px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.panel:hover h3 {
+  color: var(--gold-hi);
+}
+
+.panel p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--bone-dim);
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.panel:hover p {
+  color: var(--bone);
+}
