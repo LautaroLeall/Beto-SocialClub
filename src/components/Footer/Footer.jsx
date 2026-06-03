@@ -1,4 +1,6 @@
 import './Footer.css';
+import { MessageCircle, Mail } from 'lucide-react';
+import { FaInstagram, FaGithub, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
@@ -12,7 +14,7 @@ const Footer = () => {
           className="footer-logo"
         />
 
-        {/* Social links */}
+        {/* Social links del club */}
         <div className="footer-socials">
           <a
             href="https://www.instagram.com/elclubdebeto/"
@@ -21,11 +23,7 @@ const Footer = () => {
             className="footer-social-link"
             aria-label="Instagram"
           >
-            <svg className="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-            </svg>
+            <FaInstagram size={15} />
             Instagram
           </a>
           <a
@@ -35,9 +33,7 @@ const Footer = () => {
             className="footer-social-link"
             aria-label="WhatsApp"
           >
-            <svg className="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-            </svg>
+            <FaWhatsapp size={15} />
             WhatsApp
           </a>
           <a
@@ -45,10 +41,7 @@ const Footer = () => {
             className="footer-social-link"
             aria-label="Email"
           >
-            <svg className="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
+            <Mail size={15} strokeWidth={1.5} />
             Contacto
           </a>
         </div>
@@ -57,6 +50,42 @@ const Footer = () => {
         <p className="footer-copy">
           © {new Date().getFullYear()} Beto Social Club. Todos los derechos reservados.
         </p>
+
+        {/* Desarrollador */}
+        <div className="footer-dev">
+          <div className="dev-socials">
+            <a
+              href="https://github.com/LautaroLeall"
+              target="_blank"
+              rel="noreferrer"
+              className="dev-icon"
+              aria-label="GitHub de Lautaro Leal"
+            >
+              <FaGithub size={13} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/lauldp/"
+              target="_blank"
+              rel="noreferrer"
+              className="dev-icon"
+              aria-label="LinkedIn de Lautaro Leal"
+            >
+              <FaLinkedinIn size={13} />
+            </a>
+          </div>
+          <span className="dev-credit">
+            Desarrollado por{' '}
+            <a
+              href="https://wa.me/5493813399463"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="dev-name"
+            >
+              Lautaro Leal
+            </a>
+          </span>
+        </div>
+
       </div>
     </footer>
   );
