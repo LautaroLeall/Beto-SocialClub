@@ -24,7 +24,7 @@ const HeroSection = ({ openModal }) => {
           transition={{ duration: 0.7, delay: 0.1 }}
         >
           <span className="hero-badge-dot"></span>
-          Membresías Disponibles · MMXXV
+          Membresías Disponibles · MMXXVI
         </motion.div>
 
         <motion.div
@@ -52,7 +52,7 @@ const HeroSection = ({ openModal }) => {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <span className="ornament-line"></span>
-          <svg className="ornament-key" viewBox="0 0 40 64" fill="none">
+          <svg className="ornament-key" viewBox="0 0 40 64" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="20" cy="13" r="9.6" stroke="#c9a24b" strokeWidth="2.2" />
             <circle cx="20" cy="13" r="3.6" fill="#7a0e16" stroke="#c9a24b" strokeWidth="1.5" />
             <rect x="18.4" y="21" width="3.2" height="38" rx="1.3" fill="#c9a24b" />

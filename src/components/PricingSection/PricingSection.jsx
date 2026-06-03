@@ -83,7 +83,7 @@ const PricingSection = ({ openModal }) => {
           <div className="pricing-cta-card">
             <div className="cta-badge">
               <KeyRound size={14} />
-              Cupos limitados · MMXXV
+              Cupos limitados · MMXXVI
             </div>
             <h3>¿Estás listo para postularte?</h3>
             <p>Solo los elegidos recibirán su tarjeta Beto Social Club. Sólo gente copada.</p>
