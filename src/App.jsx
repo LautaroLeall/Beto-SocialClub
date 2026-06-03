@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Toaster } from 'sileo';
 import Navbar from './components/Navbar/Navbar';
 import HeroSection from './components/HeroSection/HeroSection';
 import CardSection from './components/CardSection/CardSection';
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <>
+      <Toaster position="top-center" />
       <Navbar />
       <HeroSection openModal={openModal} />
       <CardSection />
@@ -31,4 +33,3 @@ function App() {
 }
 
 export default App;
-
