@@ -1,0 +1,501 @@
+/* =================== CARD STAGE =================== */
+.cards-stage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(24px, 4vw, 52px);
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: min(100%, 520px);
+}
+
+.face-label {
+  font-family: var(--font-marcellus-sc);
+  letter-spacing: .42em;
+  padding-left: .42em;
+  font-size: 11px;
+  color: var(--gold);
+  opacity: .7;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.card-col:hover .face-label {
+  opacity: 1;
+}
+
+/* =================== THE CARD =================== */
+/*
+  A standard credit card is 85.6 × 54 mm → aspect ratio 1.585:1
+  Real card corner radius is ~3.18mm ≈ 3.7% of width.
+  With a 520px wide card: 3.7% = ~19px.
+  We use 14px fixed so it feels like a real card, not a rounded rect.
+*/
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.585 / 1;
+  /* REAL CARD border-radius — NOT 5cqw */
+  border-radius: 14px;
+  container-type: inline-size;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .08) inset,
+    0 24px 48px -16px rgba(0, 0, 0, .9),
+    0 6px 14px -6px rgba(0, 0, 0, .7);
+  overflow: hidden;
+  color: var(--bone);
+  cursor: pointer;
+  transform: rotate(-.4deg);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card.back {
+  transform: rotate(.4deg);
+}
+
+.card:hover {
+  transform: rotate(0deg) translateY(-8px) !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .12) inset,
+    0 44px 64px -20px rgba(0, 0, 0, .95),
+    0 10px 24px -8px rgba(0, 0, 0, .8),
+    0 0 48px -8px rgba(201, 162, 75, 0.2);
+}
+
+/* matte oxblood substrate */
+.card .field {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 120% at 50% 8%, #6e0d15 0%, #560a11 40%, #3c080d 78%, #2a0509 100%);
+}
+
+/* micro-noise texture */
+.card .field::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .35;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
+}
+
+/* guilloche — concentric radial security lines */
+.card .guilloche {
+  position: absolute;
+  inset: 0;
+  opacity: .10;
+  mix-blend-mode: screen;
+  background: repeating-radial-gradient(
+    circle at 50% 44%,
+    transparent 0 6cqw,
+    rgba(255, 220, 180, .7) 6cqw 6.25cqw
+  );
+  transition: opacity 0.5s ease;
+}
+
+.card:hover .guilloche {
+  opacity: .16;
+}
+
+/* thin gold border — like a real card's foil edge */
+.card .border {
+  position: absolute;
+  /* inset matches the card padding so inner content stays flush */
+  inset: 4cqw;
+  border: 0.3cqw solid var(--gold);
+  /* real card tiny radius */
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 4;
+  transition: border-color 0.4s ease;
+}
+
+.card:hover .border {
+  border-color: var(--gold-hi);
+}
+
+/* inner hairline */
+.card .border::after {
+  content: "";
+  position: absolute;
+  inset: 0.8cqw;
+  border: 0.12cqw solid rgba(201, 162, 75, .45);
+  border-radius: 3px;
+}
+
+/* corner gleam — shimmer highlight */
+.card .gleam {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background: linear-gradient(118deg, transparent 55%, rgba(255, 240, 210, .09) 72%, transparent 82%);
+  transition: background 0.4s ease;
+}
+
+.card:hover .gleam {
+  background: linear-gradient(118deg, transparent 48%, rgba(255, 240, 210, .15) 66%, transparent 80%);
+}
+
+/* =================== INNER LAYOUT =================== */
+/* 
+  inner uses full card size (inset:0) — padding is applied per face.
+  This prevents any clipping by the border div.
+*/
+.card .inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+/* =================== FRONT =================== */
+.front .inner {
+  padding: 4.5cqw 4.5cqw 3.5cqw;
+}
+
+/* VIP / MMXXV corners — absolute inside .inner */
+.front .tier {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: var(--font-marcellus-sc);
+  letter-spacing: .3em;
+  font-size: 2.1cqw;
+  color: var(--gold);
+  opacity: .9;
+}
+
+.front .est {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: var(--font-marcellus-sc);
+  letter-spacing: .3em;
+  font-size: 2.1cqw;
+  color: var(--gold);
+  opacity: .9;
+}
+
+/* Top flourish: lines + key */
+.front .topflourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2cqw;
+  /* push down from corner labels */
+  margin-top: 2.5cqw;
+  flex-shrink: 0;
+}
+
+.front .topflourish .line {
+  height: 0.1cqw;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.front .topflourish .line.r {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.card .key {
+  width: 4.5cqw;
+  height: auto;
+  flex-shrink: 0;
+  filter: drop-shadow(0 .3cqw .4cqw rgba(0, 0, 0, .5));
+  transition: filter 0.4s ease;
+}
+
+.card:hover .key {
+  filter: drop-shadow(0 0 1cqw rgba(201, 162, 75, 0.7));
+}
+
+/* Main logo / crest — the beto-logo-blanco includes face+script, keep it compact */
+.card .crest {
+  display: block;
+  margin: 0.8cqw auto 0;
+  /* 28% keeps the logo proportional without crowding qualifier/foot */
+  width: 30%;
+  max-width: 30%;
+  height: auto;
+  flex-shrink: 0;
+  filter: drop-shadow(0 .5cqw .8cqw rgba(0, 0, 0, .5));
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.card:hover .crest {
+  filter: drop-shadow(0 0 1.5cqw rgba(255, 255, 255, 0.15));
+  transform: scale(1.02);
+}
+
+/* "Social Club · Member" */
+.front .qualifier {
+  text-align: center;
+  margin-top: 1cqw;
+  font-family: var(--font-marcellus-sc);
+  letter-spacing: .5em;
+  padding-left: .5em;
+  color: var(--gold-hi);
+  font-size: 2.3cqw;
+  flex-shrink: 0;
+}
+
+.front .qualifier b {
+  color: var(--bone);
+  font-weight: 400;
+}
+
+/* "❋ Sólo Gente Copada" */
+.front .foot {
+  margin-top: auto;
+  margin-bottom: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1cqw;
+  font-family: var(--font-marcellus-sc);
+  letter-spacing: .28em;
+  padding-left: .28em;
+  font-size: 2cqw;
+  color: var(--bone-dim);
+  flex-shrink: 0;
+}
+
+.card .flower {
+  width: 2.4cqw;
+  height: 2.4cqw;
+  flex-shrink: 0;
+}
+
+/* =================== BACK =================== */
+.back .inner {
+  padding: 0;
+}
+
+/* Watermark — recor logo ghosted behind all */
+.back .watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  opacity: .12;
+  pointer-events: none;
+}
+
+.back .watermark img {
+  width: 55cqw;
+  transform: rotate(-8deg);
+  filter: grayscale(1) brightness(3);
+}
+
+/* "Beto. | Socio Fundador" header bar */
+.back .topbar {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  /* 4.5cqw left/right so Beto. never touches the card edge */
+  padding: 4cqw 5cqw 0;
+  flex-shrink: 0;
+}
+
+.back .topbar .b {
+  font-family: var(--font-marcellus);
+  font-size: 3.2cqw;
+  letter-spacing: .08em;
+  color: var(--bone);
+  line-height: 1;
+}
+
+.back .topbar .n {
+  font-family: var(--font-marcellus-sc);
+  letter-spacing: .18em;
+  font-size: 1.6cqw;
+  color: var(--gold);
+  line-height: 1;
+}
+
+/* Magnetic stripe */
+.back .stripe {
+  position: relative;
+  z-index: 3;
+  height: 8.5cqw;
+  margin-top: 1.8cqw;
+  background: linear-gradient(180deg, #100202, #050101);
+  box-shadow: inset 0 .3cqw .8cqw rgba(0, 0, 0, .8);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 4cqw;
+  flex-shrink: 0;
+}
+
+.back .stripe span {
+  font-family: var(--font-marcellus-sc);
+  letter-spacing: .35em;
+  font-size: 1.9cqw;
+  color: #caa14b;
+  opacity: .75;
+}
+
+/* Data + signature row */
+.back .body {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  gap: 2cqw;
+  padding: 1.8cqw 5cqw 0;
+  flex: 1;
+  min-height: 0;
+  align-items: flex-start;
+}
+
+/* Left — member data */
+.back .data {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1cqw;
+  min-width: 0;
+}
+
+.dline {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.dlabel {
+  font-family: var(--font-marcellus-sc);
+  letter-spacing: .25em;
+  font-size: 1.6cqw;
+  color: var(--gold);
+  opacity: .9;
+}
+
+.dval {
+  font-family: var(--font-marcellus);
+  font-size: 2.8cqw;
+  color: var(--bone);
+  margin-top: .3cqw;
+  line-height: 1;
+}
+
+.dval.script {
+  font-family: var(--font-cormorant);
+  font-style: italic;
+  font-size: 3.4cqw;
+  line-height: 1;
+}
+
+/* Right — signature + co-brand */
+.back .sigwrap {
+  width: 30cqw;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1.2cqw;
+  align-self: flex-end;
+}
+
+.sigpanel {
+  height: 6.5cqw;
+  border: 0.15cqw solid rgba(201, 162, 75, .55);
+  border-radius: 2px;
+  background: repeating-linear-gradient(
+    120deg,
+    rgba(243, 233, 214, .05) 0 1.2cqw,
+    rgba(243, 233, 214, .10) 1.2cqw 2.4cqw
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: .6cqw .9cqw;
+}
+
+.sigpanel small {
+  font-family: var(--font-marcellus-sc);
+  letter-spacing: .2em;
+  font-size: 1.4cqw;
+  color: var(--bone-dim);
+  opacity: .8;
+}
+
+.back .cobrand {
+  display: flex;
+  align-items: center;
+  gap: 1cqw;
+  justify-content: flex-end;
+}
+
+.back .cobrand img {
+  width: 9cqw;
+  flex-shrink: 0;
+  transition: filter 0.4s ease;
+}
+
+.card:hover .back .cobrand img {
+  filter: drop-shadow(0 0 3px rgba(201, 162, 75, 0.4));
+}
+
+.back .cobrand em {
+  font-family: var(--font-cormorant);
+  font-style: italic;
+  font-size: 1.7cqw;
+  line-height: 1.2;
+  color: var(--bone-dim);
+  text-align: right;
+}
+
+/* Terms bar */
+.back .terms {
+  position: relative;
+  z-index: 3;
+  padding: 0 5cqw;
+  margin-top: 1.4cqw;
+  margin-bottom: 3cqw;
+  font-family: var(--font-cormorant);
+  font-size: 1.7cqw;
+  line-height: 1.3;
+  color: rgba(216, 199, 171, .58);
+  text-align: center;
+  display: flex;
+  gap: .9cqw;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.back .terms .flower {
+  flex-shrink: 0;
+  margin-top: 0;
+}
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 560px) {
+  .back .body {
+    flex-direction: column;
+    gap: 1.5cqw;
+  }
+  .back .sigwrap {
+    width: 100%;
+  }
+  .back .cobrand {
+    justify-content: flex-start;
+  }
+}
