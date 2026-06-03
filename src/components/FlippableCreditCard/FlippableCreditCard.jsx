@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './FlippableCreditCard.css';
 import { motion } from 'framer-motion';
+import { Sparkles } from 'lucide-react';
 
 const FlippableCreditCard = () => {
   const [setIsFlipped] = useState(false);
@@ -22,11 +23,10 @@ const FlippableCreditCard = () => {
           <div className="gleam"></div>
           <div className="inner">
             <div className="tier">VIP</div>
-            <div className="est">MMXXV</div>
+            <div className="est">MMXXVI</div>
 
             <div className="topflourish">
               <span className="line"></span>
-              {/* skeleton key */}
               <svg className="key" viewBox="0 0 40 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="20" cy="13" r="9.6" stroke="#c9a24b" strokeWidth="2.2" />
                 <circle cx="20" cy="13" r="3.6" fill="#7a0e16" stroke="#c9a24b" strokeWidth="1.5" />
@@ -44,17 +44,7 @@ const FlippableCreditCard = () => {
             </div>
 
             <div className="foot">
-              <svg className="flower" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="3" fill="#c9a24b" />
-                <circle cx="12" cy="5.5" r="2.2" fill="#c9a24b" />
-                <circle cx="12" cy="18.5" r="2.2" fill="#c9a24b" />
-                <circle cx="5.5" cy="12" r="2.2" fill="#c9a24b" />
-                <circle cx="18.5" cy="12" r="2.2" fill="#c9a24b" />
-                <circle cx="7.5" cy="7.5" r="1.6" fill="#c9a24b" />
-                <circle cx="16.5" cy="16.5" r="1.6" fill="#c9a24b" />
-                <circle cx="16.5" cy="7.5" r="1.6" fill="#c9a24b" />
-                <circle cx="7.5" cy="16.5" r="1.6" fill="#c9a24b" />
-              </svg>
+              <Sparkles className="flower" strokeWidth={1.5} />
               Sólo Gente Copada
             </div>
           </div>
@@ -111,20 +101,14 @@ const FlippableCreditCard = () => {
                   <small>F I R M A &nbsp;·&nbsp; S I G N A T U R E</small>
                 </div>
                 <div className="cobrand">
-                  <em>una experiencia<br />de la casa</em>
+                  <em>una experiencia de la casa</em>
                   <img src="/recor-logo.png" alt="Re Corcholis" />
                 </div>
               </div>
             </div>
 
             <div className="terms">
-              <svg className="flower" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="3" fill="#c9a24b" />
-                <circle cx="12" cy="5.5" r="2.2" fill="#c9a24b" />
-                <circle cx="12" cy="18.5" r="2.2" fill="#c9a24b" />
-                <circle cx="5.5" cy="12" r="2.2" fill="#c9a24b" />
-                <circle cx="18.5" cy="12" r="2.2" fill="#c9a24b" />
-              </svg>
+              <Sparkles className="flower" strokeWidth={1.5} />
               Personal e intransferible. La casa se reserva el derecho de admisión. Presentar en puerta.
             </div>
           </div>

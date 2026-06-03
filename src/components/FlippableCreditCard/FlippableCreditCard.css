@@ -34,12 +34,6 @@
 }
 
 /* =================== THE CARD =================== */
-/*
-  A standard credit card is 85.6 × 54 mm → aspect ratio 1.585:1
-  Real card corner radius is ~3.18mm ≈ 3.7% of width.
-  With a 520px wide card: 3.7% = ~19px.
-  We use 14px fixed so it feels like a real card, not a rounded rect.
-*/
 .card {
   position: relative;
   width: 100%;
@@ -72,7 +66,7 @@
     0 0 48px -8px rgba(201, 162, 75, 0.2);
 }
 
-/* matte oxblood substrate */
+/* Contenedor principal del escenario 3D */
 .card .field {
   position: absolute;
   inset: 0;
@@ -105,15 +99,13 @@
   opacity: .16;
 }
 
-/* thin gold border — like a real card's foil edge */
 .card .border {
   position: absolute;
   inset: 4cqw;
   border: 0.3cqw solid var(--gold);
   border-radius: 6px;
   pointer-events: none;
-  /* z-index: 2 = BELOW .inner (z-index:3) so border never covers content */
-  z-index: 2;
+  z-index: 3;
   transition: border-color 0.4s ease;
 }
 
@@ -121,13 +113,13 @@
   border-color: var(--gold-hi);
 }
 
-/* inner hairline */
 .card .border::after {
   content: "";
   position: absolute;
   inset: 0.8cqw;
   border: 0.12cqw solid rgba(201, 162, 75, .45);
   border-radius: 3px;
+  z-index: 3;
 }
 
 /* corner gleam — shimmer highlight — z-index:4 sits above border(2) but below nothing critical */
@@ -144,11 +136,7 @@
   background: linear-gradient(118deg, transparent 48%, rgba(255, 240, 210, .15) 66%, transparent 80%);
 }
 
-/* =================== INNER LAYOUT =================== */
-/* 
-  inner uses full card size (inset:0) — padding is applied per face.
-  This prevents any clipping by the border div.
-*/
+/* =================== CONTENIDO INTERNO =================== */
 .card .inner {
   position: absolute;
   inset: 0;
@@ -157,17 +145,16 @@
   z-index: 3;
 }
 
-/* =================== FRONT =================== */
+/* =================== FRENTE DE LA TARJETA =================== */
 .front .inner {
   padding: 4.5cqw 4.5cqw 3.5cqw;
 }
 
-/* VIP / MMXXV corners — positioned INSIDE the gold border area (border is at 4cqw inset) */
+/* Esquinas VIP / MMXXVI — posicionadas DENTRO del área del borde dorado */
 .front .tier {
   position: absolute;
-  /* 5.2cqw from top/left puts it clearly inside the 4cqw border */
-  top: 5.2cqw;
-  left: 5.5cqw;
+  top: 6.5cqw;
+  left: 6.5cqw;
   font-family: var(--font-marcellus-sc);
   letter-spacing: .3em;
   font-size: 2.1cqw;
@@ -177,8 +164,8 @@
 
 .front .est {
   position: absolute;
-  top: 5.2cqw;
-  right: 5.5cqw;
+  top: 6.5cqw;
+  right: 6.5cqw;
   font-family: var(--font-marcellus-sc);
   letter-spacing: .3em;
   font-size: 2.1cqw;
@@ -186,19 +173,19 @@
   opacity: .9;
 }
 
-/* Top flourish: lines + key */
+/* Adorno superior: las líneas doradas horizontales y la llave */
 .front .topflourish {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2cqw;
+  gap: 2.5cqw;
   /* push down from corner labels */
-  margin-top: 2.5cqw;
+  margin-top: 3cqw;
   flex-shrink: 0;
 }
 
 .front .topflourish .line {
-  height: 0.1cqw;
+  height: 1px;
   flex: 1;
   background: linear-gradient(90deg, transparent, var(--gold));
 }
@@ -207,6 +194,7 @@
   background: linear-gradient(90deg, var(--gold), transparent);
 }
 
+/* Ornamental key SVG */
 .card .key {
   width: 4.5cqw;
   height: auto;
@@ -219,12 +207,11 @@
   filter: drop-shadow(0 0 1cqw rgba(201, 162, 75, 0.7));
 }
 
-/* Main logo / crest — the beto-logo-blanco includes face+script, keep it compact */
+/* Logo principal ("Beto.") - width controla qué tan grande se ve */
 .card .crest {
   display: block;
-  margin: 0.8cqw auto 0;
-  /* 28% keeps the logo proportional without crowding qualifier/foot */
-  width: 30%;
+  margin: 1.5cqw auto 0;
+  width: 28%;
   max-width: 30%;
   height: auto;
   flex-shrink: 0;
@@ -240,7 +227,7 @@
 /* "Social Club · Member" */
 .front .qualifier {
   text-align: center;
-  margin-top: 1cqw;
+  margin-top: 2cqw;
   font-family: var(--font-marcellus-sc);
   letter-spacing: .5em;
   padding-left: .5em;
@@ -254,10 +241,9 @@
   font-weight: 400;
 }
 
-/* "❋ Sólo Gente Copada" — needs bottom margin to clear the bottom border */
+/* Texto inferior "❋ Sólo Gente Copada" — margin-bottom evita el borde inferior */
 .front .foot {
-  margin-top: auto;
-  /* 5.5cqw bottom margin keeps foot above the 4cqw gold border */
+  margin-top: 2cqw;
   margin-bottom: 5.5cqw;
   text-align: center;
   display: flex;
@@ -272,13 +258,15 @@
   flex-shrink: 0;
 }
 
+/* Lucide Sparkles icon used as ornamental flourish */
 .card .flower {
   width: 2.4cqw;
   height: 2.4cqw;
   flex-shrink: 0;
+  color: var(--gold);
 }
 
-/* =================== BACK =================== */
+/* =================== DORSO DE LA TARJETA =================== */
 .back .inner {
   padding: 0;
 }
@@ -301,21 +289,20 @@
   filter: grayscale(1) brightness(3);
 }
 
-/* "Beto. | Socio Fundador" header bar */
+/* Barra superior ("Beto. | Socio Fundador") */
 .back .topbar {
   position: relative;
   z-index: 3;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  /* 5.5cqw top so Beto. sits clearly inside the 4cqw border */
-  padding: 5.5cqw 5.5cqw 0;
+  padding: 7cqw 7.2cqw 0;
   flex-shrink: 0;
 }
 
 .back .topbar .b {
   font-family: var(--font-marcellus);
-  font-size: 3.2cqw;
+  font-size: 2.5cqw;
   letter-spacing: .08em;
   color: var(--bone);
   line-height: 1;
@@ -329,36 +316,35 @@
   line-height: 1;
 }
 
-/* Magnetic stripe */
+/* Banda magnética negra */
 .back .stripe {
   position: relative;
-  z-index: 3;
-  height: 8.5cqw;
+  z-index: 1;
+  height: 7.5cqw;
   margin-top: 1.8cqw;
   background: linear-gradient(180deg, #100202, #050101);
   box-shadow: inset 0 .3cqw .8cqw rgba(0, 0, 0, .8);
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 4cqw;
+  padding-right: 8cqw;
   flex-shrink: 0;
 }
 
 .back .stripe span {
   font-family: var(--font-marcellus-sc);
   letter-spacing: .35em;
-  font-size: 1.9cqw;
+  font-size: 1.5cqw;
   color: #caa14b;
   opacity: .75;
 }
 
-/* Data + signature row */
+/* Fila principal del dorso: Datos a la izquierda, Firma a la derecha */
 .back .body {
   position: relative;
   z-index: 3;
   display: flex;
   gap: 2cqw;
-  /* 5.5cqw left/right to shift data slightly inside the border */
   padding: 1.8cqw 7.5cqw 0;
   flex: 1;
   min-height: 0;
@@ -370,7 +356,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1cqw;
+  gap: 2.5cqw;
   min-width: 0;
 }
 
@@ -405,12 +391,12 @@
 
 /* Right — signature + co-brand */
 .back .sigwrap {
-  width: 30cqw;
+  width: auto;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 1.2cqw;
+  gap: 1cqw;
   align-self: flex-end;
 }
 
@@ -442,7 +428,7 @@
 }
 
 .back .cobrand img {
-  width: 9cqw;
+  width: 8cqw;
   flex-shrink: 0;
   transition: filter 0.4s ease;
 }
@@ -460,14 +446,13 @@
   text-align: right;
 }
 
-/* Terms bar — must clear the 4cqw bottom border */
+/* Barra inferior de términos y condiciones */
 .back .terms {
   position: relative;
   z-index: 3;
   padding: 0 5.5cqw;
-  margin-top: 1.4cqw;
-  /* 5.5cqw bottom margin keeps text above the gold border line */
-  margin-bottom: 5.5cqw;
+  margin-top: 0;
+  margin-bottom: 6.5cqw;
   font-family: var(--font-cormorant);
   font-size: 1.7cqw;
   line-height: 1.3;
@@ -486,17 +471,5 @@
 }
 
 /* =================== RESPONSIVE =================== */
-@media (max-width: 560px) {
-  .back .body {
-    flex-direction: column;
-    gap: 1.5cqw;
-  }
-
-  .back .sigwrap {
-    width: 100%;
-  }
-
-  .back .cobrand {
-    justify-content: flex-start;
-  }
-}
+/* Ajustes para pantallas chicas (celulares) ELIMINADOS a pedido:
+   La tarjeta ahora se ve exactamente igual en celular que en PC. */
