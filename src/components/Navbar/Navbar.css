@@ -1,0 +1,128 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 24px 0;
+  transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+  padding: 16px 0;
+  background: rgba(18, 3, 5, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(201, 162, 75, 0.1);
+}
+
+.nav-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Navbar logo image — visible but not oversized */
+.logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 1px 6px rgba(0,0,0,0.5));
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.nav-logo:hover .logo-img {
+  opacity: 0.8;
+  filter: drop-shadow(0 0 10px rgba(201, 162, 75, 0.3));
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-link-btn {
+  background: none;
+  border: none;
+  color: var(--bone-dim);
+  font-family: var(--font-marcellus-sc);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 8px 0;
+  position: relative;
+}
+
+.nav-link-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.nav-link-btn:hover {
+  color: var(--gold);
+}
+
+.nav-link-btn:hover::after {
+  width: 100%;
+}
+
+.mobile-menu-btn {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: rgba(18, 3, 5, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-bottom: 1px solid rgba(201, 162, 75, 0.2);
+}
+
+.mobile-nav-link-btn {
+  background: none;
+  border: none;
+  color: var(--bone);
+  font-family: var(--font-marcellus-sc);
+  font-size: 15px;
+  letter-spacing: 0.15em;
+  padding: 16px 0;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-nav-link-btn:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .mobile-menu-btn {
+    display: block;
+  }
+  .mobile-menu {
+    display: flex;
+  }
+}
