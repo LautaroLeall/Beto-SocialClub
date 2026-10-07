@@ -10,7 +10,7 @@ const CardSection = () => {
           className="card-section-text"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
           <span className="card-section-kicker">La Credencial</span>
@@ -26,7 +26,7 @@ const CardSection = () => {
           className="card-section-stage"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.9, delay: 0.2 }}
         >
           <FlippableCreditCard />

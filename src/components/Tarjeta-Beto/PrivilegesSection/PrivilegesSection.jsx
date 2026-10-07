@@ -32,7 +32,7 @@ const PrivilegesSection = () => {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           Beneficios del <em>Socio VIP</em>
         </motion.h2>
@@ -41,7 +41,7 @@ const PrivilegesSection = () => {
           className="lede"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ delay: 0.2 }}
         >
           La tarjeta Beto Social Club no es para cualquiera. Es una llave a una experiencia superior donde la discreción y el estatus son primordiales.
@@ -54,7 +54,7 @@ const PrivilegesSection = () => {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: 0.1 * index }}
               whileHover={{ scale: 1.02 }}
             >

@@ -9,7 +9,7 @@ const InfoSection = () => {
           className="info-text"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="info-title">
@@ -30,7 +30,7 @@ const InfoSection = () => {
           className="info-image-container"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="info-image-wrapper">
