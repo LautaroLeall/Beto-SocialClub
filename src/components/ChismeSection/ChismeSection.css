@@ -1,0 +1,41 @@
+.chisme-section {
+  padding: 8rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.chisme-box {
+  max-width: 800px;
+  text-align: center;
+  position: relative;
+}
+
+.chisme-box::before {
+  content: '"';
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-marcellus);
+  font-size: 8rem;
+  color: var(--red-leno);
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.chisme-text {
+  font-family: var(--font-marcellus);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.5;
+  color: var(--white);
+  font-style: italic;
+}
+
+.chisme-author {
+  margin-top: 2rem;
+  font-family: var(--font-sans);
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
