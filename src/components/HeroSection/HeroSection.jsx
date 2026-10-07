@@ -1,106 +1,45 @@
 import './HeroSection.css';
 import { motion } from 'framer-motion';
+import Hero3D from '../Hero3D/Hero3D';
 
-const HeroSection = ({ openModal }) => {
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+const HeroSection = () => {
   return (
-    <section id="hero" className="hero-section">
-      {/* Ambient glow orbs */}
-      <div className="hero-orb hero-orb-1"></div>
-      <div className="hero-orb hero-orb-2"></div>
+    <section className="hero-section" id="hero">
+      <div className="curtain"></div>
 
-      <div className="hero-content">
+      {/* 3D Embers Background */}
+      <Hero3D />
 
+      <div className="hero-container container">
         <motion.div
-          className="hero-badge"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="hero-badge"
         >
-          <span className="hero-badge-dot"></span>
-          Membresías Disponibles · MMXXVI
-        </motion.div>
-
-        <motion.div
-          className="hero-logo-wrap"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3 }}
-        >
-          <img src="/beto-logo-blanco.png" alt="Beto Social Club" className="hero-logo" />
+          THE SOCIAL CLUB OF YERBA BUENA
         </motion.div>
 
         <motion.h1
           className="hero-title"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.5 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} // smooth apple-like ease
         >
-          Social <em>Club</em>
+          BETO SE TRAJO <br /><span className="text-red glow-text">LENO</span>
         </motion.h1>
 
-        <motion.div
-          className="hero-ornament"
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <span className="ornament-line"></span>
-          <svg className="ornament-key" viewBox="0 0 40 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="13" r="9.6" stroke="#c9a24b" strokeWidth="2.2" />
-            <circle cx="20" cy="13" r="3.6" fill="#7a0e16" stroke="#c9a24b" strokeWidth="1.5" />
-            <rect x="18.4" y="21" width="3.2" height="38" rx="1.3" fill="#c9a24b" />
-            <rect x="21.6" y="49" width="8" height="2.7" rx="1.1" fill="#c9a24b" />
-            <rect x="21.6" y="54.5" width="5.4" height="2.7" rx="1.1" fill="#c9a24b" />
-          </svg>
-          <span className="ornament-line r"></span>
-        </motion.div>
-
         <motion.p
-          className="hero-sub"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.9, delay: 1 }}
-        >
-          Una tarjeta de socio que no se muestra: se reconoce.
-          <br />
-          Pertenencia, estatus y discreción — en Re Corcholis.
-        </motion.p>
-
-        <motion.div
-          className="hero-ctas"
+          className="hero-subtitle"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+          transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
         >
-          <button className="btn-primary" onClick={openModal}>
-            Solicitar Membresía
-          </button>
-          <button className="btn-secondary" onClick={() => scrollToSection('card')}>
-            Ver la Tarjeta
-          </button>
-        </motion.div>
-
-        <motion.button
-          className="hero-scroll-hint"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 2 }}
-          onClick={() => scrollToSection('card')}
-        >
-          <span className="scroll-dot"></span>
-          Desliza para explorar
-        </motion.button>
+          Domingo 11 · Recorcholis · Yerba Buena · +21
+        </motion.p>
 
       </div>
     </section>
   );
 };
-
 export default HeroSection;
