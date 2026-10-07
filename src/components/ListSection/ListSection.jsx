@@ -58,8 +58,8 @@ const ListSection = () => {
         transition={{ duration: 0.8, type: "spring" }}
       >
         <div className="list-header">
-          <h2>FREE <span className="text-red">PASS</span></h2>
-          <p>Anotate en la lista oficial. Cupos limitados.</p>
+          <h2>GUEST <span className="text-red">LIST</span></h2>
+          <p>El acceso al club es por lista. Solicitá tu lugar.</p>
         </div>
 
         <form className="list-form" onSubmit={handleSubmit}>
