@@ -1,0 +1,86 @@
+.location-section {
+  padding: 6rem 1.5rem;
+  text-align: center;
+}
+
+.location-section .section-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-family: var(--font-marcellus);
+  margin-bottom: 3rem;
+}
+
+.map-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(214, 40, 40, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map-wrapper iframe {
+  transition: filter 0.3s;
+}
+
+.map-wrapper:hover iframe {
+  filter: brightness(0.9);
+}
+
+/* Subtle overlay to prevent map from stealing scroll initially, removed background tint to keep map natural */
+.map-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.btn-secondary {
+  position: relative;
+  display: inline-block;
+  background-color: transparent;
+  color: var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem 3rem;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-20deg);
+  transition: 0.5s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--white);
+  color: var(--black);
+  border-color: var(--white);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover::before {
+  left: 150%;
+}
+
+.btn-secondary:active {
+  transform: translateY(2px) scale(0.98);
+}
