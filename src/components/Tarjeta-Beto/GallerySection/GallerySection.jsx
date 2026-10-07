@@ -16,7 +16,7 @@ const GallerySection = () => {
           className="gallery-title"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.8 }}
         >
           Nuestras <em>Noches</em>
@@ -32,7 +32,7 @@ const GallerySection = () => {
               className="gallery-item"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <img src={src} alt={`Nightclub vibe ${index + 1}`} />
