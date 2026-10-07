@@ -1,42 +1,39 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial } from '@react-three/drei';
-import * as random from 'maath/random/dist/maath-random.esm';
+import { MeshDistortMaterial } from '@react-three/drei';
 
-function Embers(props) {
+function LiquidBlob() {
   const ref = useRef();
-  // Generate 2000 points in a sphere
-  const [sphere] = useState(() => random.inSphere(new Float32Array(2000 * 3), { radius: 2.5 }));
 
   useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 15;
-    ref.current.rotation.y -= delta / 20;
-    // Make them float up slowly like smoke/embers
-    ref.current.position.y += delta * 0.05;
-    if (ref.current.position.y > 0.5) ref.current.position.y = -0.5;
+    ref.current.rotation.x -= delta * 0.05;
+    ref.current.rotation.y += delta * 0.08;
   });
 
   return (
-    <group rotation={[0, 0, Math.PI / 4]}>
-      <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
-        <PointMaterial
-          transparent
-          color="#D62828"
-          size={0.015}
-          sizeAttenuation={true}
-          depthWrite={false}
-          blending={2} // Additive blending for that glowing ember look
-        />
-      </Points>
-    </group>
+    <mesh ref={ref} scale={4} position={[0, 0, -1]}>
+      <sphereGeometry args={[1, 64, 64]} />
+      <MeshDistortMaterial
+        color="#D62828" // El rojo oficial de Leno/Beto
+        distort={1.2} // Mucha más deformación
+        speed={2.5} // Movimiento más rápido
+        roughness={0.1} // Más brillante
+        metalness={0.9} // Más metálico para que refleje luz
+        opacity={0.45} // Mucho más visible
+        transparent
+      />
+    </mesh>
   );
 }
 
 export default function Hero3D() {
   return (
-    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, opacity: 0.8, pointerEvents: 'none' }}>
-      <Canvas camera={{ position: [0, 0, 2] }}>
-        <Embers />
+    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
+      <Canvas camera={{ position: [0, 0, 5] }}>
+        <ambientLight intensity={0.8} />
+        <directionalLight position={[10, 10, 5]} intensity={4} color="#ff3333" />
+        <directionalLight position={[-10, -10, -5]} intensity={2} color="#ffffff" />
+        <LiquidBlob />
       </Canvas>
     </div>
   );
