@@ -33,7 +33,7 @@ const Navbar = () => {
   ];
 
   return (
-    <motion.nav 
+    <motion.nav
       className={`navbar ${isScrolled ? 'scrolled' : ''}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -47,8 +47,8 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="nav-links">
           {navLinks.map((link) => (
-            <button 
-              key={link.name} 
+            <button
+              key={link.name}
               onClick={() => scrollToSection(link.id)}
               className="nav-link-btn"
             >
@@ -65,14 +65,14 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <motion.div 
+        <motion.div
           className="mobile-menu"
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
         >
           {navLinks.map((link) => (
-            <button 
-              key={link.name} 
+            <button
+              key={link.name}
               onClick={() => scrollToSection(link.id)}
               className="mobile-nav-link-btn"
             >
