@@ -1,0 +1,68 @@
+.lineup-section {
+  padding: 6rem 1.5rem;
+}
+
+.lineup-section .section-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-family: var(--font-marcellus);
+}
+
+.lineup-section .section-subtitle {
+  text-align: center;
+  color: var(--text-dim);
+  margin-bottom: 4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.djs-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.dj-row {
+  display: flex;
+  align-items: center;
+  padding: 2rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+
+.dj-row:hover {
+  background-color: rgba(214, 40, 40, 0.05);
+  box-shadow: inset 4px 0 0 var(--red-leno);
+}
+
+.dj-time {
+  flex: 0 0 100px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--red-leno);
+  text-shadow: 0 0 10px rgba(214, 40, 40, 0.4);
+}
+
+.dj-info {
+  flex: 1;
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+.dj-name {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-family: var(--font-marcellus);
+  color: var(--white);
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+}
+
+.dj-style {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
