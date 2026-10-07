@@ -39,7 +39,7 @@ const PricingSection = ({ openModal }) => {
           className="pricing-header"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.7 }}
         >
           <span className="pricing-kicker">Membresía</span>
@@ -60,7 +60,7 @@ const PricingSection = ({ openModal }) => {
               className="step-card"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
+              viewport={{ once: false, margin: '-60px' }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
               whileHover={{ translateY: -6 }}
             >
@@ -77,7 +77,7 @@ const PricingSection = ({ openModal }) => {
           className="pricing-cta-wrap"
           initial={{ opacity: 0, scale: 0.97 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.7, delay: 0.3 }}
         >
           <div className="pricing-cta-card">
