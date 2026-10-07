@@ -1,0 +1,63 @@
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logos {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logo-leno {
+  height: 45px;
+  object-fit: contain;
+  margin-left: 0.5rem;
+}
+
+.logo-beto {
+  height: 65px;
+  object-fit: contain;
+}
+
+.nav-cross {
+  color: var(--red-leno);
+  font-family: var(--font-sans);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-btn {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(214, 40, 40, 0.5);
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  transition: all 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--red-leno);
+  border-color: var(--red-leno);
+  box-shadow: 0 0 15px rgba(214, 40, 40, 0.5);
+}
