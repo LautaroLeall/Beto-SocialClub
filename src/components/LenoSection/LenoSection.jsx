@@ -66,16 +66,40 @@ const LenoSection = () => {
           whileHover={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
-          <div className="leno-image-area" style={{ transform: "translateZ(50px)" }}>
-            {/* Si tenés la foto real de la hamburguesa, reemplazá este div por una etiqueta img */}
-            <div className="burger-placeholder">FOTO BURGER AQUÍ</div>
+          <div className="leno-image-area" style={{ transform: "translateZ(60px)" }}>
+
+            <motion.img
+              src="/hamburguesa-leno.png"
+              alt="Hamburguesa Leno"
+              className="leno-burger-img"
+              animate={{ y: [0, -15, 0] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+            />
           </div>
 
           <div className="leno-info-area" style={{ transform: "translateZ(30px)" }}>
-            <img src="/leno-logo.png" alt="Leno Logo" style={{ width: '5rem', marginBottom: '1.5rem', filter: 'drop-shadow(0 0 10px rgba(214,40,40,0.5))', borderRadius: '50%' }} />
-            <h3 className="leno-combo-title">COMBO FUNDADOR</h3>
-            <p className="leno-combo-desc">1 Burger Leno + Trago de Autor</p>
-            <div className="leno-tag">Edición Limitada</div>
+            <div className="leno-collab-badge" style={{ transform: "translateZ(-20px)" }}>
+              <img src="/beto.png" alt="Beto" className="collab-badge-beto" />
+              <span className="collab-badge-x">×</span>
+              <img src="/leno-logo.png" alt="Leno" className="collab-badge-leno" style={{ borderRadius: '50%' }} />
+            </div>
+            
+            <h3 className="leno-combo-title">LA PREVIA VIP</h3>
+
+            <div className="leno-time-box">
+              <span className="leno-time">00:00 - 02:00 HS</span>
+              <span className="leno-time-label">ACCESO LIMITADO</span>
+            </div>
+
+            <p className="leno-combo-desc">
+              <strong>Exclusivo para invitados en la lista oficial.</strong><br />
+              Llegá temprano y arrancá la noche con la mejor burger de Tucumán.
+            </p>
+
+            <div className="leno-tags-group">
+              <div className="leno-tag">Stock Limitado</div>
+              <div className="leno-tag outline">Solo en Lista</div>
+            </div>
           </div>
         </motion.div>
       </motion.div>
