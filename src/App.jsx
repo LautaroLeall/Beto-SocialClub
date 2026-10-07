@@ -1,34 +1,40 @@
-import { useState } from 'react';
-import { Toaster } from 'sileo';
-import Navbar from './components/Navbar/Navbar';
+import { useState, useEffect } from 'react';
+import SmoothScroll from './components/SmoothScroll/SmoothScroll';
+import CustomCursor from './components/CustomCursor/CustomCursor';
+import TopNav from './components/TopNav/TopNav';
 import HeroSection from './components/HeroSection/HeroSection';
-import CardSection from './components/CardSection/CardSection';
-import InfoSection from './components/InfoSection/InfoSection';
-import PrivilegesSection from './components/PrivilegesSection/PrivilegesSection';
-import GallerySection from './components/GallerySection/GallerySection';
-import PricingSection from './components/PricingSection/PricingSection';
-import Footer from './components/Footer/Footer';
-import MembershipModal from './components/MembershipModal/MembershipModal';
+import ChismeSection from './components/ChismeSection/ChismeSection';
+import LineupSection from './components/LineupSection/LineupSection';
+import LenoSection from './components/LenoSection/LenoSection';
+import TicketsSection from './components/TicketsSection/TicketsSection';
+import LocationSection from './components/LocationSection/LocationSection';
+import RulesSection from './components/RulesSection/RulesSection';
+import EventFooter from './components/EventFooter/EventFooter';
+import FloatingWhatsApp from './components/FloatingWhatsApp/FloatingWhatsApp';
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  useEffect(() => {
+    // Catch-All Routing: Si alguien tipea una URL rota como elclubdebeto.com/holamundo
+    // Vercel carga el index.html, y esta línea limpia la URL devolviéndolos a la raíz limpia "/".
+    if (window.location.pathname !== '/') {
+      window.history.replaceState(null, '', '/');
+    }
+  }, []);
 
   return (
-    <>
-      <Toaster position="top-center" />
-      <Navbar />
-      <HeroSection openModal={openModal} />
-      <CardSection />
-      <InfoSection />
-      <PrivilegesSection />
-      <GallerySection />
-      <PricingSection openModal={openModal} />
-      <Footer />
-      <MembershipModal isOpen={isModalOpen} onClose={closeModal} />
-    </>
+    <SmoothScroll>
+      <CustomCursor />
+      <TopNav />
+      <HeroSection />
+      <ChismeSection />
+      <LineupSection />
+      <LenoSection />
+      <TicketsSection />
+      <LocationSection />
+      <RulesSection />
+      <EventFooter />
+      <FloatingWhatsApp />
+    </SmoothScroll>
   );
 }
 
