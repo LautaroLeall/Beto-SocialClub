@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import SmoothScroll from './components/SmoothScroll/SmoothScroll';
 import CustomCursor from './components/CustomCursor/CustomCursor';
 import TopNav from './components/TopNav/TopNav';
