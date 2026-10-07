@@ -1,24 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --ox-deep: #2c0509;
-  /* darkest oxblood */
-  --ox: #4a0d12;
-  /* oxblood */
-  --club-red: #7a0e16;
-  /* club red */
-  --crimson: #a8121f;
-  /* crimson accent */
-  --bone: #f3e9d6;
-  /* cream / bone */
-  --bone-dim: #d8c7ab;
-  --gold: #c9a24b;
-  /* antique gold foil */
-  --gold-hi: #ecd08a;
+  --black: #000000;
+  --bg-dark: #0a0a0a;
+  --red-leno: #D62828;
+  --red-leno-hover: #b81f1f;
+  --white: #ffffff;
+  --text-dim: #a3a3a3;
+  --border-dim: #222222;
 
   --font-marcellus: 'Marcellus', serif;
-  --font-marcellus-sc: 'Marcellus SC', serif;
-  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
 }
 
 * {
@@ -29,33 +21,91 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: radial-gradient(120% 80% at 50% -10%, #1d0508 0%, #120305 55%, #070203 100%);
-  color: var(--bone);
-  font-family: var(--font-cormorant);
+  background-color: var(--black);
+  color: var(--white);
+  font-family: var(--font-sans);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* Film grain overlay */
+/* Film grain overlay for the "misterioso" vibe */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 9;
-  opacity: .05;
+  z-index: 9999;
+  opacity: .04;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   mix-blend-mode: overlay;
 }
 
-/* Base utility classes that might be shared */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-marcellus);
+  font-weight: 400;
+}
+
 .container {
-  max-width: 1180px;
+  max-width: 800px; /* Landing page usually narrower for better reading */
   margin: 0 auto;
+  padding: 4rem 1.5rem;
   position: relative;
   z-index: 1;
-  padding: clamp(20px, 5vw, 64px) clamp(14px, 4vw, 48px) 80px;
+}
+
+/* Primary Button Style - Advanced */
+.btn-primary {
+  position: relative;
+  display: inline-block;
+  background-color: var(--red-leno);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1.2rem 3rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(214, 40, 40, 0.3), inset 0 -3px 0 rgba(0,0,0,0.2);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+  transition: 0.5s;
+}
+
+.btn-primary:hover {
+  background-color: var(--red-leno-hover);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(214, 40, 40, 0.5), inset 0 -1px 0 rgba(0,0,0,0.2);
+}
+
+.btn-primary:hover::before {
+  left: 150%;
+}
+
+.btn-primary:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 0 5px 10px rgba(214, 40, 40, 0.3);
+}
+
+.text-red {
+  color: var(--red-leno);
 }
