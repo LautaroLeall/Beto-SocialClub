@@ -31,7 +31,7 @@ export default function TopNav() {
           <span className="nav-cross">×</span>
           <img src="/leno-logo.png" alt="Leno" className="nav-logo logo-leno" style={{ borderRadius: '50%' }} />
         </div>
-        <a href="#tickets" className="nav-btn">TICKETS</a>
+        <a href="#lista" className="nav-btn">LISTA</a>
       </div>
     </motion.nav>
   );
