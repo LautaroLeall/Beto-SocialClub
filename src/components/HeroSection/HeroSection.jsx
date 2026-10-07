@@ -35,10 +35,14 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
         >
-          Domingo 11 · Recorcholis · Yerba Buena · +21
+          DOMINGO 11 <br />
+          RECORCHOLIS · YERBA BUENA <br />
+          +21
         </motion.p>
-
       </div>
+
+      {/* Degradado suave para transición a la siguiente sección */}
+      <div className="hero-bottom-fade"></div>
     </section>
   );
 };
