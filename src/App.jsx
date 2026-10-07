@@ -6,7 +6,7 @@ import HeroSection from './components/HeroSection/HeroSection';
 import ChismeSection from './components/ChismeSection/ChismeSection';
 import LineupSection from './components/LineupSection/LineupSection';
 import LenoSection from './components/LenoSection/LenoSection';
-import TicketsSection from './components/TicketsSection/TicketsSection';
+import ListSection from './components/ListSection/ListSection';
 import LocationSection from './components/LocationSection/LocationSection';
 import RulesSection from './components/RulesSection/RulesSection';
 import EventFooter from './components/EventFooter/EventFooter';
@@ -29,7 +29,7 @@ function App() {
       <ChismeSection />
       <LineupSection />
       <LenoSection />
-      <TicketsSection />
+      <ListSection />
       <LocationSection />
       <RulesSection />
       <EventFooter />
