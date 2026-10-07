@@ -2,10 +2,10 @@ import './RulesSection.css';
 import { motion } from 'framer-motion';
 
 const rules = [
-  "Estricto +21. Presentar DNI físico o en Mi Argentina.",
+  "Evento +18 VIP +21. Presentar DNI físico o en Mi Argentina.",
   "La casa se reserva el derecho de admisión y permanencia.",
   "Sin devolución salvo suspensión del evento.",
-  "Cambio de nombre de entrada válido hasta 48hs antes."
+  "Previa Beto x Leno solo por lista."
 ];
 
 const containerVariants = {
