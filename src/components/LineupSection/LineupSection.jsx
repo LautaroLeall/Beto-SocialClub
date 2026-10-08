@@ -2,9 +2,9 @@ import './LineupSection.css';
 import { motion } from 'framer-motion';
 
 const lineup = [
-  { time: '01:30', name: 'WARM UP / GUEST DJ', style: 'Cachengue & House' },
-  { time: '03:00', name: 'RESIDENT DJ', style: 'Main Event - Full Fiesta' },
-  { time: '05:00', name: 'CLOSING SET', style: 'Hasta que salga el sol' }
+  { time: '00:00', name: 'WARM UP', style: 'Como si estuvieras previando en casa' },
+  { time: '02:00', name: 'RESIDENT DJ', style: 'Cachengue & House' },
+  { time: '04:00', name: 'CLOSING DJ', style: 'Main Event - Full Fiesta' }
 ];
 
 const containerVariants = {
