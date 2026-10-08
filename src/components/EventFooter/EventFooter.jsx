@@ -20,13 +20,14 @@ const EventFooter = () => {
 
       <div className="footer-producer">
         <p>Producido por</p>
-        <img src="/pnrm-logo.png" alt="Panorama Group" style={{ height: '2.5rem', marginTop: '5px' }} />
+        <img src="/pnrm-logo.png" alt="Panorama Group" style={{ height: '3.5rem', marginTop: '5px', filter: 'invert(1) drop-shadow(0 0 10px rgba(214, 40, 40, 0.5))' }} />
       </div>
 
       <div className="footer-links">
         <motion.a whileHover={{ y: -3, color: '#fff' }} href="https://instagram.com/elclubdebeto" target="_blank" rel="noreferrer">@elclubdebeto</motion.a>
         <motion.a whileHover={{ y: -3, color: '#fff' }} href="https://instagram.com/lenoargentina" target="_blank" rel="noreferrer">@lenoargentina</motion.a>
         <motion.a whileHover={{ y: -3, color: '#fff' }} href="https://instagram.com/pnrmgroup.ar" target="_blank" rel="noreferrer">@pnrmgroup.ar</motion.a>
+        <motion.a whileHover={{ y: -3, color: '#fff' }} href="https://www.instagram.com/recorcholis_tuc" target="_blank" rel="noreferrer">@recorcholis_tuc</motion.a>
       </div>
     </motion.footer>
   );
